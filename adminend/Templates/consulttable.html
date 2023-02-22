@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Display Consult Details</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>username</th>
+                            <th>phone no:</th>
+                            <th>Email</th>
+                            <th>Message</th>
+
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for d in data %}
+                        <tr>
+                            <td>{{ d.name }}</td>
+                            <td>{{ d.username }}</td>
+                           <td>{{ d.phone }}</td>
+                            <td>{{ d.email }}</td>
+                            <td>{{ d.message }}</td>
+
+                            <td>
+                                <form action="{% url 'deleteconsult' dataid=d.id %}">
+                                    <button type="submit" class="btn btn-success">Delete</button>
+                                </form>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+</body>
+{% endblock %}
+</html>

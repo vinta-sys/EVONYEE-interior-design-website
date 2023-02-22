@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">PRODUCT PAGE</h4>
+                    <p class="card-description">  ENTER DETAILS </p>
+                    <form class="forms-sample" method="post" action="{% url 'saveworks' %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                        <div class="form-group">
+                        <label for="exampleSelectGender">Category</label>
+                        <select class="form-control" id="exampleSelectGender" name="category">
+                          <option>select</option>
+                          {% for d in data %}
+                          <option>{{d.Name}}</option>
+                              {% endfor %}
+
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName4">Description</label>
+                        <input type="text" class="form-control" id="exampleInputName4" placeholder="description" name="description">
+                      </div>
+                      <div>
+                          <input type="file" name="Image">
+                      </div><br>
+
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+</body>
+{% endblock %}
+</html>
